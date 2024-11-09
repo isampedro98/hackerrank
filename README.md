@@ -1,5 +1,5 @@
 # HackerRank Solutions
-This repository contains my solutions to various coding challenges on HackerRank. 
+This repository contains my solutions to relevant coding challenges on HackerRank. 
 
 Each solution is implemented in TypeScript and is organized by topic or challenge category. 
 
