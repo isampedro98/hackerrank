@@ -28,7 +28,6 @@ function readLine(): string {
  */
 
 function diagonalDifference(arr: number[][]): number {
-    // Write your code here
     let left = 0, right = 0;
     for( let i = 0; i < arr.length; i++ ) {
         left += arr[i][i];
