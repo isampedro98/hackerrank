@@ -30,45 +30,12 @@ function readLine(): string {
  * The function accepts 2D_INTEGER_ARRAY matrix as parameter.
  */
 
-// function bfs(r: number, c: number): number {
-//         const queue = [[r, c]];
-//         visited[r][c] = true;
-//         let regionSize = 0;
-
-//         while (queue.length > 0) {
-//             const [row, col] = queue.shift()!;
-//             regionSize++;
-
-//             for (const [dr, dc] of directions) {
-//                 const newRow = row + dr;
-//                 const newCol = col + dc;
-//                 if (newRow >= 0 && newRow < rows && newCol >= 0 && newCol < cols && matrix[newRow][newCol] === 1 && !visited[newRow][newCol]) {
-//                     visited[newRow][newCol] = true;
-//                     queue.push([newRow, newCol]);
-//                 }
-//             }
-//         }
-
-//         return regionSize;
-//     }
-
-// function dfsWithDepthLimit(r: number, c: number, depthLimit: number, currentDepth: number): number {
-//         if (r < 0 || r >= rows || c < 0 || c >= cols || visited[r][c] || matrix[r][c] === 0 || currentDepth > depthLimit) {
-//             return 0;
-//         }
-
-//         visited[r][c] = true;
-//         let regionSize = 1;
-
-//         for (const [dr, dc] of directions) {
-//             regionSize += dfsWithDepthLimit(r + dr, c + dc, depthLimit, currentDepth + 1);
-//         }
-
-//         return regionSize;
-//     }
-
 // We can use DFS, BFS or IDDFS
 // DFS first traverses nodes going through one adjacent of root, then next adjacent. The problem with this approach is, if there is a node close to root, but not in first few subtrees explored by DFS, then DFS reaches that node very late. Also, DFS may not find shortest path to a node (in terms of number of edges).
+// DFS fits well here because of its efficiency for exploring all nodes of a region. We used dfs on a unvisited 1
+// We explore this new region by using a stack of unvisited nodes. Each node can be a 1 or a 0. 
+// If it's a 0 or if already visited, or is out of limits, then this node doesnt matter
+// If it's a 1, we visit it, sum it and search for neighboring 1's in the region.
 
 // BFS goes level by level, but requires more space. The space required by DFS is O(d) where d is depth of tree, but space required by BFS is O(n) where n is number of nodes in tree (Why? Note that the last level of tree can have around n/2 nodes and second last level n/4 nodes and in BFS we need to have every level one by one in queue).
 
